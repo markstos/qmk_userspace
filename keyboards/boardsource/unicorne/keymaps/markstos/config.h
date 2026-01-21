@@ -66,7 +66,7 @@
 #define PREVENT_STUCK_MODIFER
 
 // When enabled, typing a mod-tap plus second within term will register as the mod-combo
-// Ref: https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#permissive-hold 
+// Ref: https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#permissive-hold
 #define PERMISSIVE_HOLD
 
 #define COMBO_COUNT 3
@@ -80,7 +80,6 @@
 #define ONESHOT_TAP_TOGGLE 3  /* Tapping this number of times holds the key until tapped once again. */
 #define ONESHOT_TIMEOUT 2000  /* Time (in ms) before the one shot key is released */
 
-// Shim: if OLED is disabled for this keymap, provide a no-op for boardsource lib calls
-#ifndef OLED_ENABLE
-#    define oled_write_raw_P(data, size) ((void)0)
-#endif
+// Fix for keyboard spamming keys after suspend/resume
+// Allows USB state to stabilize before processing key presses
+#define USB_SUSPEND_WAKEUP_DELAY 500
