@@ -5,6 +5,8 @@ This repo contains the "markstos" layouts for the Corne (crkbd), cocot46plus and
 For more about this layout, see:
 https://mark.stosberg.com/markstos-corne-3x5-1-keyboard-layout/
 
+It also contains the userspace for my Ploopy Adept trackba..
+
 ## To flash markstos layout to a Corne keyboard (v3)
 
    make crkbd:markstos:dfu
@@ -30,6 +32,24 @@ For the first flash, you may need to flash both halves.
 ## To flash markstos layout to a cocot46plus keyboard
 
     make aki27/cocot46plus:markstos
+
+## Customized Ploopy Adept Trackball firmware.
+
+The Ploopy Adept trackball has 6 buttons: Foour across the top and two on the sides.
+To cutomize mine, first I slowed down the polling to find a better balance of speed
+and accuracy. Button layout:
+
+    [MIDDLE]  [COPY] [PASTE] [HOLD-TO-SCROLL]
+    [LEFT]                            [RIGHT]
+
+Hold-to-scroll enables the trackball to work as a scroll wheel.
+
+Copy/paste are implemented with the widely recognized Control+Insert/Shift+Insert bindings,
+which work in both terminals and apps for those that implement it.
+
+Double-tapping (<200ms) causes the copy/paste keys to work as browser forward and back.
+
+    [MIDDLE]  [BACK] [FORWARD] [HOLD-TO-SCROLL]
 
 # Leftover docs -- default docs from qmk_userspace template repo follow.
 
