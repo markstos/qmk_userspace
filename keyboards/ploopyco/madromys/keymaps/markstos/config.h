@@ -10,3 +10,7 @@
 
 // Only engage drag-scroll while the scroll key is held.
 #define PLOOPY_DRAGSCROLL_MOMENTARY
+
+#define TAPPING_TERM 200
+#define TAPPING_TERM_PER_KEY
+
