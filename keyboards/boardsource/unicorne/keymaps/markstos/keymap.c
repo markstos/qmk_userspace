@@ -1,4 +1,18 @@
 #include QMK_KEYBOARD_H
+#include "usb_util.h"
+
+bool is_keyboard_left_impl(void); // defined in quantum/split_common/split_util.c
+
+// markstos: The right half is always the master, regardless of how long the
+// host takes to enumerate USB. Requires EE_HANDS (see config.h).
+bool is_keyboard_master_impl(void) {
+    bool is_master = !is_keyboard_left_impl();
+    if (!is_master) {
+        // As stock QMK does: don't enumerate if the left half is plugged in.
+        usb_disconnect();
+    }
+    return is_master;
+}
 
 void keyboard_post_init_user(void) {
 #ifdef RGB_MATRIX_ENABLE

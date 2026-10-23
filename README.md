@@ -15,19 +15,27 @@ For the first flash, you may need to flash both halves.
 
 ## To flash markstos layout to a Boardsource Unicorne keyboard with dual pointing devices.
 
-This expects the right half connects to the computer.
+The right half always connects to the computer; it is hard-coded as the
+master so the keyboard boots reliably through hubs/docks. Each half must be
+flashed with its own target so it knows which side it is:
 
-    make boardsource/unicorne:markstos:flash
- 
-For the first flash, you may need to flash both halves.
+    make boardsource/unicorne:markstos:uf2-split-right   # right half
+    make boardsource/unicorne:markstos:uf2-split-left    # left half
+
+Always use these targets rather than plain `:flash`; they also restore the
+handedness setting if the EEPROM is ever cleared.
 
 ## To flash markstos layout to a Boardsource Unicorne keyboard with no pointing devices.
 
-This expects the right half connects to the computer.
+The right half always connects to the computer; it is hard-coded as the
+master so the keyboard boots reliably through hubs/docks. Each half must be
+flashed with its own target so it knows which side it is:
 
-    make boardsource/unicorne:markstos-nopointer:flash
- 
-For the first flash, you may need to flash both halves.
+    make boardsource/unicorne:markstos-nopointer:uf2-split-right   # right half
+    make boardsource/unicorne:markstos-nopointer:uf2-split-left    # left half
+
+Always use these targets rather than plain `:flash`; they also restore the
+handedness setting if the EEPROM is ever cleared.
 
 ## To flash markstos layout to a cocot46plus keyboard
 

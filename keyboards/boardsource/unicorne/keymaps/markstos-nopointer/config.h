@@ -23,9 +23,18 @@
 
 /* Select hand configuration */
 
+// markstos: The right half is always the master (see is_keyboard_master_impl()
+// in keymap.c). Stock QMK picks the master by waiting up to 2 seconds for the
+// host to configure USB; through a hub + dock chain, or while the laptop is
+// waking, that can time out, both halves become slaves, and the keyboard never
+// boots (no lights). EE_HANDS lets each half know its side without USB, so
+// flash each half with the matching target (uf2-split-left / uf2-split-right).
 //#define MASTER_LEFT
-#define MASTER_RIGHT
-// #define EE_HANDS
+//#define MASTER_RIGHT
+#define EE_HANDS
+
+// Reboot the left (slave) half if it hears nothing from the master at boot.
+#define SPLIT_WATCHDOG_ENABLE
 
 // Customized by markstos
 #define TAPPING_TERM 200
